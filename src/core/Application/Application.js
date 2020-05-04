@@ -1,21 +1,16 @@
 'use strict';
 
 class Application {
-  constructor() {
-    this.config = {};
-    this.database = {};
-    this.server = {};
-    this.api = {};
+  constructor() {}
+
+  inject(...modules) {
+    for (const module of modules) {
+      const moduleName = module.constructor.name.toLowerCase();
+      this[moduleName] = module;
+    }
   }
 
-  injectModules(config, database, server, api) {
-    this.config = config;
-    this.database = database;
-    this.server = server;
-    this.api = api;
-  }
-
-  start() {
+  run() {
     this.server.start();
   }
 }
