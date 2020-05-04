@@ -8,10 +8,6 @@ class Database {
     this.pool = new Pool(this.databaseConfig);
   }
 
-  injectApplication(application = {}) {
-    this.application = application;
-  }
-
   query(sql, values = []) {
     return this.pool.query(sql, values);
   }
