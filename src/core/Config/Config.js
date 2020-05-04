@@ -18,10 +18,6 @@ class Config {
     };
   }
 
-  injectApplication(application = {}) {
-    this.application = application;
-  }
-
   database() {
     return this.database;
   }
