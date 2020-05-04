@@ -10,15 +10,17 @@ class Server {
     this.serverConfig = serverConfig;
   }
 
-  injectApplication(application = {}) {
-    this.application = application;
+  inject(...modules) {
+    for (const module of modules) {
+      const moduleName = module.constructor.name.toLowerCase();
+      this[moduleName] = module;
+    }
   }
 
   start() {
     const { host, port } = this.serverConfig;
-    const { api } = this.application;
     const routerFactory = new RouterFactory();
-    const router = routerFactory.create(api);
+    const router = routerFactory.create(this.api);
     const { route } = router;
 
     http
