@@ -9,8 +9,6 @@ class Router {
     this.route = async (req, res) => {
       const { url, method } = req;
 
-      console.log(this.api);
-
       if (url === '/favicon.ico') {
         res.writeHead(204);
         res.end();
@@ -24,14 +22,14 @@ class Router {
       }
 
       const splittedUrl = url.split('/');
-      const apiModule = splittedUrl[1];
+      const apiModuleName = splittedUrl[1];
 
       const route =
-        url === `/${apiModule}` || url === `/${apiModule}/`
+        url === `/${apiModuleName}` || url === `/${apiModuleName}/`
           ? '/'
           : splittedUrl.slice(2).join('/').replace(/\/$/, '');
 
-      const controller = this.api.modules[apiModule].controller;
+      const controller = this.api.apiModules[apiModuleName].controller;
       const control = controller[`${method}__${route}`];
 
       if (control) {
