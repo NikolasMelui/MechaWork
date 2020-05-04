@@ -1,8 +1,8 @@
 {
-  "name": "nikolasmelui-nodejs-boilerplate",
-  "version": "0.0.1",
+  "name": "mechawork",
+  "version": "0.0.2",
   "private": true,
-  "description": "Simple nodejs boilerplate without any unnecessary dependencies",
+  "description": "Attempt to create really fast and easy to use serverside api development framework without any unnecessary dependencies, only nodejs and pg",
   "author": {
     "name": "nikolasmelui",
     "email": "slak@samaradom.ru",
@@ -11,14 +11,12 @@
   "license": "MIT",
   "keywords": [
     "api",
+    "web",
     "rest",
     "http",
     "https",
-    "node.js",
     "nodejs",
-    "node",
-    "web",
-    "server",
+    "node.js",
     "webserver",
     "httpserver",
     "boilerplate",
