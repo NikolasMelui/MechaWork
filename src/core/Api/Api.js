@@ -1,11 +1,15 @@
 'use strict';
 
 class Api {
-  constructor(modules) {
-    this.modules = modules;
+  constructor(apiModules) {
+    this.apiModules = apiModules;
   }
-  injectApplication(application = {}) {
-    this.application = application;
+
+  inject(...modules) {
+    for (const module of modules) {
+      const moduleName = module.constructor.name.toLowerCase();
+      this[moduleName] = module;
+    }
   }
 }
 
