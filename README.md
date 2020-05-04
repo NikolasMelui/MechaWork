@@ -1,6 +1,21 @@
 # 🔧 MechaWork
 
-Attempt to create really fast and easy to use serverside api development framework without any unnecessary dependencies, only [nodejs][nodejs] and [pg][pg] Based on the [nikolasmelui-nodejs-boilerplate][nikolasmelui-nodejs-boilerplate]. Powered by [NikolasMelui][nikolasmelui]. Dependencies - [nodejs][nodejs] and [pg][pg]. DevDependencies - [eslint][eslint], [prettier][prettier], [lint-staged][lint-staged], [husky][husky] and [nodemon][nodemon].
+Attempt to create really fast and easy to use serverside api development framework without any unnecessary dependencies, only [nodejs][nodejs] and [pg][pg].
+Based on the [nikolasmelui-nodejs-boilerplate][nikolasmelui-nodejs-boilerplate].
+Powered by [NikolasMelui][nikolasmelui].
+
+## Dependencies
+
+- [nodejs][nodejs]
+- [pg][pg]
+
+## DevDependencies
+
+- [eslint][eslint]
+- [prettier][prettier]
+- [lint-staged][lint-staged]
+- [husky][husky]
+- [nodemon][nodemon]
 
 ## Installation
 
