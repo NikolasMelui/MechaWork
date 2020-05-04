@@ -5,24 +5,23 @@ const path = require('path');
 const Api = require('./Api');
 
 class ApiFactory {
-  async create(application = {}) {
-    const modulesPath = path.resolve(__dirname, '../..', 'api');
-    const moduleList = await fs.readdir(modulesPath);
-    const modules = {};
+  async create() {
+    const apiModulesPath = path.resolve(__dirname, '../..', 'api');
+    const apiModuleList = await fs.readdir(apiModulesPath);
+    const apiModules = {};
 
-    for (const moduleName of moduleList) {
-      const modulePath = path.resolve(
-        modulesPath,
-        moduleName,
-        `${moduleName}.module.js`,
+    for (const apiModuleName of apiModuleList) {
+      const apiModulePath = path.resolve(
+        apiModulesPath,
+        apiModuleName,
+        `${apiModuleName}.module.js`,
       );
-      const Module = require(modulePath);
-      const currentModule = new Module();
-      // currentModule.injectApplication(application);
+      const ApiModule = require(apiModulePath);
+      const apiModule = new ApiModule();
 
-      modules[moduleName] = currentModule;
+      apiModules[apiModuleName] = apiModule;
     }
-    return new Api(modules);
+    return new Api(apiModules);
   }
 }
 
