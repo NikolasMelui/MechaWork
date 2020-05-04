@@ -6,26 +6,25 @@ const ConfigFactory = require('./core/Config/ConfigFactory');
 const ApiFactory = require('./core/Api/ApiFactory');
 
 const bootstrap = async () => {
-  const applicationFactory = new ApplicationFactory();
-  const application = applicationFactory.create();
-
   const configFactory = new ConfigFactory();
   const config = configFactory.create();
-  config.injectApplication(application);
 
   const databaseFactory = new DatabaseFactory();
   const database = databaseFactory.create(config.database);
-  database.injectApplication(application);
+
+  const apiFactory = new ApiFactory();
+  const api = await apiFactory.create();
+  api.inject(database);
 
   const serverFactory = new ServerFactory();
   const server = serverFactory.create(config.server);
-  server.injectApplication(application);
+  server.inject(api);
 
-  const apiFactory = new ApiFactory();
-  const api = await apiFactory.create(application);
+  const applicationFactory = new ApplicationFactory();
+  const application = applicationFactory.create();
 
-  application.injectModules(config, database, server, api);
-  application.start();
+  application.inject(config, database, server, api);
+  application.run();
 };
 
 bootstrap();
